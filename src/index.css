@@ -361,9 +361,14 @@ line-height: 20px;
 }
 .left-footer__company{
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   width: 20%;
+  height: 60px;
+}
+.left-footer__company h1, img{
+  font-size: 1.73rem;
+  margin: 0 10px;
 }
 @media only screen and (max-width: 1920px){
   .wrapper-item{
