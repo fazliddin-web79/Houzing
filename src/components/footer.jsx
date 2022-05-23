@@ -11,9 +11,9 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer">
-        <div className="wrapper-item">
-          <div>
-            <h2 className="footer-info__title">Contact Us</h2>
+        <div className="wrapper-item footer-info-wrap">
+          <div className="footer-left__info">
+            <h2 className="footer-item__title">Contact Us</h2>
             <p>
               <img src={location} alt="this is location" />
               329 Queensberry Street, North Melbourne VIC 3051, Australia.
@@ -40,34 +40,34 @@ class Footer extends Component {
               </div>
             </div>
           </div>
-          <div>
+          <div className="footer-right__info">
             <div className="footer-info">
               <h1 className="footer-item__title">Discover</h1>
+              <p>Chicago</p>
               <p>Los Angeles</p>
-              <p>Los Angeles</p>
-              <p>Los Angeles</p>
-              <p>Los Angeles</p>
+              <p>Miami</p>
+              <p>New York</p>
             </div>
             <div className="footer-info">
               <h1 className="footer-item__title">Lists by Category</h1>
               <p>Apartments</p>
-              <p>Apartments</p>
-              <p>Apartments</p>
-              <p>Apartments</p>
-              <p>Apartments</p>
-              <p>Apartments</p>
+              <p>Candos</p>
+              <p>Houses</p>
+              <p>Offices</p>
+              <p>Retail</p>
+              <p>Villas</p>
             </div>
             <div className="footer-info">
               <h1 className="footer-item__title">Lists by Category</h1>
-              <p>Apartments</p>
-              <p>Apartments</p>
-              <p>Apartments</p>
-              <p>Apartments</p>
+              <p>About As</p>
+              <p>Terms & Conditions</p>
+              <p>Support Center</p>
+              <p>Contact US</p>
             </div>
           </div>
         </div>
         <hr />
-        <div className="wrapper-item">
+        <div className="wrapper-item footer-bottom">
           <div className="left-footer__company">
             <img src={logo} alt="" />
             <h1>Houzing</h1>

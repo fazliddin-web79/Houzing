@@ -84,6 +84,8 @@ hr{
   color: #0D263B;
 }
 .properties p{
+  margin-top: 20px;
+  text-align: center;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
@@ -113,7 +115,9 @@ hr{
   transition: all 0.3s;
 }
 .card:hover{
-  box-shadow: 0 0 4px 3px rgba(1,1,1,0.2) ;
+  box-shadow: 0 17px 47px 8px rgba(1,1,1,0.2) ;
+
+  transform: scale(1.05);
 }
 .card-img{
   width: 100%;
@@ -241,24 +245,104 @@ color:#696969;
 
 /*This is footer section stylies*/
 .footer{
+  margin-top: 20px;
   background-color: #0D263B;
   color: #fff;
 }
-
+.footer-info-wrap{
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.footer-left__info{
+  width: 25%;
+}
+.icons-custom{
+  margin-top: 20px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+.footer-right__info{
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+.footer-item__title{
+  font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+}
+.footer-info-wrap p{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+}
+.footer-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.left-footer__company{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+}
 @media only screen and (max-width: 1920px){
   .wrapper-item{
-    width: 80%;
+    width: 75%;
   }
 }
 @media only screen and (max-width: 1520px){
   .wrapper-item{
     width: 90%;
+    margin: 0 auto;
   }
 }
 @media only screen and (max-width:650px){
   .nav-bar__links{
     display: none;
   }
+  .footer-info-wrap{
+    flex-wrap: wrap;
+  }
+  .footer-left__info {
+    padding-left: 10px;
+    width: 100%;
+  
+}
+.footer-right__info{
+  flex-wrap: wrap;
+  width: 100%;
+}
+.footer-info{
+  width: 100%;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+.footer-bottom{
+  flex-direction: column;
+}
+.left-footer__company{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  justify-content: center;
+}
+.left-footer__company h1{
+  margin-left: 10px;
+}
+.right-footer__title{
+  margin-bottom: 20px;
+  text-align: center;
+}
 }
 
 @media only screen and (max-width:375px){
@@ -271,4 +355,5 @@ color:#696969;
   .person-img{
     margin-left: 275px;
   }
+
 }
