@@ -94,7 +94,77 @@ hr{
   color: #696969;
 }
 
+/*this is searc Panel styles*/
 
+.search-panel{
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.input-content{
+  border: 1px solid #E6E9EC;
+  border-radius: 2px;
+  width: 151px;
+  padding: 10px 10px 10px 10px;
+  height: 44px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;;
+}
+.input-content img{
+  margin: 5px;
+}
+.input-content input, .input-content select{
+  border: none;
+  outline: none;
+  color: #757575;
+}
+.input-content:first-child {
+  width: 527px;
+  height: 44px;
+}
+.input-content input{
+  width: 90%;
+}
+.input-content select{
+  width: 85px;
+}
+.btn-content{
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+.btn-content button:first-child{
+  height: 44px;
+  padding: 5px 20px;
+  border: 1px solid #E6E9EC;
+  border-radius: 2px;
+  background-color: white;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #0D263B;
+}
+.btn-content button:last-child{
+  height: 44px;
+  padding: 5px 30px 5px 30px  ;
+  color: #FFFFFF;
+  background-color: #0061DF;
+  border-radius:2px;
+  border: none;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.btn-content button img{
+  margin: 0 6px;
+}
 
 /* this is cards styles*/
 .wrapper-item{
@@ -203,11 +273,11 @@ hr{
 }
 .card-title p{
   font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 20px;
-color:#696969;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color:#696969;
 }
 .card-price {
   height: 60px;
@@ -309,6 +379,25 @@ line-height: 20px;
 @media only screen and (max-width:650px){
   .nav-bar__links{
     display: none;
+  }
+  .search-panel{
+    padding-right: 1%;
+    flex-direction: column;
+  }
+  .search-panel .input-content{
+    border: none;
+    border-bottom: 1px solid #E6E9EC;
+    width: 98%;
+    margin-bottom: 10px;
+  }
+  .input-content select{
+    width: 85%;
+  }
+  .input-content input{
+    width: 85%;
+  }
+  .btn-content{
+    width: 100%;
   }
   .footer-info-wrap{
     flex-wrap: wrap;
