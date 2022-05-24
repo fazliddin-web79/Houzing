@@ -514,7 +514,9 @@ line-height: 20px;
   .card{
     width: 343px;
   }
-  
+  .company-item{
+    justify-content: flex-start;
+  }
   .person-img{
     margin-left: 275px;
   }
