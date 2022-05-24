@@ -334,6 +334,7 @@ hr{
 }
 .is-like{
   width: 35px;
+  transition: all 0.2s;
 }
 .is-like:hover{
   cursor: pointer;
@@ -429,13 +430,29 @@ line-height: 20px;
   }
   .card{
     width: 343px;
+    height: 440px;
   }
-  
   .person-img{
     margin-left: 275px;
   }
 }
+@media only screen and (max-width:763px){
+  .nav-bar{
+    display: flex;
+    justify-content: space-between;
+  }
+  .wrapper-item{
+    justify-content: center;
+  }
+}
 @media only screen and (max-width:650px){
+  .nav-bar{
+    display: flex;
+    justify-content: space-between;
+  }
+  .wrapper-item.wrapper-cards{
+    justify-content: center;
+  }
   .nav-bar__links{
     display: none;
   }
@@ -503,5 +520,6 @@ line-height: 20px;
   }
 .wrapper-item{
     width: 98%;
+    justify-content: center;
   }
 }
