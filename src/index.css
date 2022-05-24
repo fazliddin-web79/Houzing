@@ -129,6 +129,7 @@ hr{
   width: 90%;
 }
 .input-content select{
+  background-color: white;
   width: 85px;
 }
 .btn-content{
