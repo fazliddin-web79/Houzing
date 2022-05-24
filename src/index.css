@@ -174,7 +174,7 @@ hr{
 .wrapper-cards{
   display: flex;
   flex-wrap: wrap;
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .card{
@@ -185,9 +185,9 @@ hr{
   transition: all 0.3s;
 }
 .card:hover{
-  box-shadow: 0 17px 47px 8px rgba(1,1,1,0.2) ;
+  box-shadow: 0 10px 20px 8px rgba(1,1,1,0.01) ;
 
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 .card-img{
   width: 100%;
@@ -299,18 +299,44 @@ hr{
   font-size: 12px;
   font-family: "Montserrat";
 }
-
+.buys-card{
+  width: 25px;
+}
+.buys-card h2{
+  font-size: 1.72rem;
+  color: #696969;
+  font-style: italic;
+}
 .card-control-btn{
   height: 35px;
-  width: 70px;
+  width: 100px;
   display: flex;
   justify-content: space-between;
 }
-.card-control-btn img:first-child{
-  width: 20px;
+.is-buy{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.card-control-btn img:last-child{
+.is-buy img:hover{
+  cursor: pointer;
+}
+.is-buy img:first-child{
+  width: 10px;
+  margin-left: 25px;
+  margin-bottom: 2px;
+}
+.is-buy img:last-child{
+  width: 10px;
+  margin-top: 2px;
+  margin-right: 25px;
+}
+.is-like{
   width: 35px;
+}
+.is-like:hover{
+  cursor: pointer;
 }
 
 /*This is footer section stylies*/
@@ -361,7 +387,7 @@ line-height: 20px;
 }
 .left-footer__company{
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   width: 20%;
   height: 60px;
