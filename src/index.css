@@ -122,16 +122,13 @@ hr{
   color: #757575;
 }
 .input-content:first-child {
-  width: 527px;
+  width: 888px;
   height: 44px;
 }
 .input-content input{
   width: 90%;
 }
-.input-content select{
-  background-color: white;
-  width: 85px;
-}
+
 .btn-content{
   width: 25%;
   display: flex;

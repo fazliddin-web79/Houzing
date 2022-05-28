@@ -7,8 +7,9 @@ import like from "../icons/like.svg";
 import liked from "../icons/lined.svg";
 import upPrice from "../icons/up-price.svg";
 import downPrice from "../icons/down-price.svg";
+import { CardStyled } from "./index.js";
 
-class Card extends Component {
+class Hause extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +38,7 @@ class Card extends Component {
       }
     };
     return (
-      <div className="card">
+      <CardStyled>
         <div
           className="card-img"
           style={{
@@ -98,9 +99,9 @@ class Card extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </CardStyled>
     );
   }
 }
 
-export default Card;
+export default Hause;
