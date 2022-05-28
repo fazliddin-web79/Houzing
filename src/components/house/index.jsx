@@ -19,7 +19,6 @@ class Hause extends Component {
     };
   }
   render() {
-    const { title, info, price } = this.props.data;
     const isLiked = () => {
       if (!this.state.wasLiked) {
         this.setState({ isLike: liked, wasLiked: true });
@@ -55,32 +54,35 @@ class Hause extends Component {
         </div>
         <div className="wrapper">
           <div className="card-title">
-            <h3>{title.titleName}</h3>
-            <p>{title.address}</p>
+            <h3>{this.props.data.title}</h3>
+            <p>
+              {this.props.data.zip} {this.props.data.city}{" "}
+              {this.props.data.region} {this.props.data.country}{" "}
+            </p>
           </div>
           <div className="card-feature">
             <div>
               <img src={bed} alt="" />
-              <p>{info.bed} Beds</p>
+              <p>{this.props.data.bed} Beds</p>
             </div>
             <div>
               <img src={bath} alt="" />
-              <p>{info.bath} Baths</p>
+              <p>{this.props.data.bath} Baths</p>
             </div>
             <div>
               <img src={garage} alt="" />
-              <p>{info.garage} Garage</p>
+              <p>{this.props.data.garage} Garage</p>
             </div>
             <div>
               <img src={ruller} alt="" />
-              <p>{info.field} Sq Ft</p>
+              <p>{this.props.data.field} Sq Ft</p>
             </div>
           </div>
           <hr />
           <div className="card-control">
             <div className="card-price">
-              <h3>${price.before}/mo</h3>
-              <h3>${price.after}/mo</h3>
+              <h3>${this.props.data.before}/mo</h3>
+              <h3>${this.props.data.after}/mo</h3>
             </div>
             <div className="buys-card">
               <h2>{this.state.count}</h2>
