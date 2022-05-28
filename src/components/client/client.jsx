@@ -19,20 +19,32 @@ class Client extends Component {
 
     this.state = {
       searching: false,
-      data,
+      dates: data,
       notFound: false,
+      clearSearch: true,
+      onSelect: {
+        zip: "",
+        city: "",
+        region: "",
+        country: "",
+        bed: "",
+        field: "",
+        before: "",
+        after: "",
+      },
     };
   }
   render() {
     const onChange = ({ target }) => {
       const { name, value } = target;
-      let res = data.filter((item) =>
+      this.setState({ clearSearch: false, onSelect: { [name]: value } });
+      const res = data.filter((item) =>
         `${item[name]}`.toLowerCase().includes(value.toLowerCase())
       );
       res.length === 0
         ? this.setState({ notFound: true })
         : this.setState({ notFound: false });
-      this.setState({ data: res });
+      this.setState({ dates: res });
     };
     return (
       <div>
@@ -69,24 +81,38 @@ class Client extends Component {
                       type="text"
                       placeholder="Country"
                       name="country"
+                      value={
+                        this.state.clearSearch
+                          ? ""
+                          : this.state.onSelect.country
+                      }
                       onChange={(e) => onChange(e)}
                     />
                     <input
                       type="text"
                       placeholder="Region"
                       name="region"
+                      value={
+                        this.state.clearSearch ? "" : this.state.onSelect.region
+                      }
                       onChange={(e) => onChange(e)}
                     />
                     <input
                       type="text"
                       placeholder="City"
                       name="city"
+                      value={
+                        this.state.clearSearch ? "" : this.state.onSelect.city
+                      }
                       onChange={(e) => onChange(e)}
                     />
                     <input
                       type="text"
                       placeholder="Zip code"
                       name="zip"
+                      value={
+                        this.state.clearSearch ? "" : this.state.onSelect.zip
+                      }
                       onChange={(e) => onChange(e)}
                     />
                   </div>
@@ -98,12 +124,18 @@ class Client extends Component {
                       type="text"
                       placeholder="Rooms"
                       name="bed"
+                      value={
+                        this.state.clearSearch ? "" : this.state.onSelect.bed
+                      }
                       onChange={(e) => onChange(e)}
                     />
                     <input
                       type="text"
                       placeholder="Size"
                       name="field"
+                      value={
+                        this.state.clearSearch ? "" : this.state.onSelect.field
+                      }
                       onChange={(e) => onChange(e)}
                     />
                     <input type="text" placeholder="Sort" />
@@ -116,12 +148,18 @@ class Client extends Component {
                       type="text"
                       placeholder="Min price"
                       name="before"
+                      value={
+                        this.state.clearSearch ? "" : this.state.onSelect.before
+                      }
                       onChange={(e) => onChange(e)}
                     />
                     <input
                       type="text"
                       placeholder="Max price"
                       name="after"
+                      value={
+                        this.state.clearSearch ? "" : this.state.onSelect.after
+                      }
                       onChange={(e) => onChange(e)}
                     />
                   </div>
@@ -131,7 +169,16 @@ class Client extends Component {
               <WrapBg>
                 <Container type="margin">
                   <BtnWrap>
-                    <button>Clear search Panel</button>
+                    <button
+                      onClick={() => {
+                        this.setState({
+                          clearSearch: true,
+                          dates: data.filter((item) => true),
+                        });
+                      }}
+                    >
+                      Clear search Panel
+                    </button>
                   </BtnWrap>
                 </Container>
               </WrapBg>
@@ -155,7 +202,7 @@ class Client extends Component {
           </EmptyData>
         ) : (
           <div className="wrapper-cards wrapper-item">
-            {this.state.data.map((item) => {
+            {this.state.dates.map((item) => {
               return (
                 <div key={item.id}>
                   <Hause data={item} />
