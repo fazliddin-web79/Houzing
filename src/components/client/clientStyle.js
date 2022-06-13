@@ -6,10 +6,10 @@ export const Search = styled.div`
   right: 0;
   z-index: 1;
   background: white;
-  box-shadow: 0 0 10px 10px rgb(1 1 1 / 10%);
+  box-shadow: 0 0 8px 8px rgb(1 1 1 / 2%);
   border-radius: 5px;
 
-  transform-origin: top;
+  transform-origin: top right;
   animation: example 0.2s ease;
   @keyframes example {
     0% {
@@ -86,7 +86,21 @@ export const BtnWrap = styled.div`
     line-height: 20px;
   }
 `;
-
+export const Button = styled.div`
+  margin-top: 15px;
+  height: 40px;
+  padding: 5px 30px 5px 30px;
+  color: #ffffff;
+  background-color: #0061df;
+  border-radius: 4px;
+  border: none;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+`;
 export const EmptyData = styled.div`
   margin: 0 auto;
   display: flex;

@@ -7,7 +7,7 @@ import like from "../icons/like.svg";
 import liked from "../icons/lined.svg";
 import upPrice from "../icons/up-price.svg";
 import downPrice from "../icons/down-price.svg";
-import { CardStyled } from "./index.js";
+import { CardStyled } from "./style.js";
 
 class Hause extends Component {
   constructor(props) {
@@ -19,12 +19,18 @@ class Hause extends Component {
     };
   }
   render() {
-    const isLiked = () => {
+    const after = this.props.data.after;
+    const before = this.props.data.before;
+    const afterStr = "" + parseInt(after / 1000) + "," + (after % 1000);
+    const beforeStr = "" + parseInt(before / 1000) + "," + (before % 1000);
+
+    const isLiked = (id) => {
       if (!this.state.wasLiked) {
         this.setState({ isLike: liked, wasLiked: true });
       } else {
         this.setState({ isLike: like, wasLiked: false });
       }
+      this.props.onClick(id);
     };
     const onUp = () => {
       if (this.state.count < 10) {
@@ -81,8 +87,8 @@ class Hause extends Component {
           <hr />
           <div className="card-control">
             <div className="card-price">
-              <h3>${this.props.data.before}/mo</h3>
-              <h3>${this.props.data.after}/mo</h3>
+              <h3>${beforeStr}/mo</h3>
+              <h3>${afterStr}/mo</h3>
             </div>
             <div className="buys-card">
               <h2>{this.state.count}</h2>
@@ -94,7 +100,7 @@ class Hause extends Component {
               </div>
               <img
                 src={this.state.isLike}
-                onClick={isLiked}
+                onClick={() => isLiked(this.props.data.id)}
                 className="is-like"
                 alt="this is vektor"
               />

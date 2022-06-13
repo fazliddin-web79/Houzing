@@ -11,16 +11,17 @@ import {
   WrapBg,
   BtnWrap,
   EmptyData,
+  Button,
 } from "./clientStyle";
 
 class Client extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       searching: false,
       dates: data,
       notFound: false,
+      likedSearch: false,
       clearSearch: true,
       onSelect: {
         zip: "",
@@ -41,10 +42,50 @@ class Client extends Component {
       const res = data.filter((item) =>
         `${item[name]}`.toLowerCase().includes(value.toLowerCase())
       );
+      this.setState({ dates: res });
       res.length === 0
         ? this.setState({ notFound: true })
         : this.setState({ notFound: false });
+    };
+    const sortMax = ({ target }) => {
+      const { value } = target;
+      if (value.length === 0) {
+        this.setState({ dates: data, notFound: false, clearSearch: true });
+      } else {
+        const max = parseInt(value);
+        this.setState({ clearSearch: false, onSelect: { ofter: max } });
+        const res = data.filter((item) => item.after <= max);
+        this.setState({ dates: res });
+        res.length === 0
+          ? this.setState({ notFound: true })
+          : this.setState({ notFound: false });
+      }
+    };
+    const sortMin = ({ target }) => {
+      const { value } = target;
+      if (value.length === 0) {
+        this.setState({ dates: data, notFound: false, clearSearch: true });
+      } else {
+        const min = parseInt(value);
+        this.setState({ clearSearch: false, onSelect: { before: min } });
+        const res = data.filter((item) => item.after >= min);
+        this.setState({ dates: res });
+        res.length === 0
+          ? this.setState({ notFound: true })
+          : this.setState({ notFound: false });
+      }
+    };
+    const liked = (id) => {
+      const res = this.state.dates.map((item) => {
+        return item.id === id ? { ...item, isliked: true } : item;
+      });
       this.setState({ dates: res });
+    };
+    const sortLiked = () => {
+      if (!this.state.likedSearch) {
+        const res = this.state.dates.filter((item) => item.isliked === true);
+        this.setState({ dates: res, likedSearch: true });
+      } else this.setState({ dates: data, likedSearch: false });
     };
     return (
       <div>
@@ -57,15 +98,20 @@ class Client extends Component {
             />
           </div>
           <div className="btn-content">
-            <button
-              onClick={() => {
-                this.setState({ searching: !this.state.searching });
-              }}
-            >
+            <button>
               <img src={settingsInput} alt="" />
               Advanced
             </button>
-            <button>
+            <button
+              onClick={() => {
+                this.setState({
+                  searching: !this.state.searching,
+                  clearSearch: true,
+                  dates: data,
+                  notFound: false,
+                });
+              }}
+            >
               <img src={searchBtn} alt="" />
               Search
             </button>
@@ -82,9 +128,9 @@ class Client extends Component {
                       placeholder="Country"
                       name="country"
                       value={
-                        this.state.clearSearch
-                          ? ""
-                          : this.state.onSelect.country
+                        !this.state.clearSearch
+                          ? this.state.onSelect.country
+                          : ""
                       }
                       onChange={(e) => onChange(e)}
                     />
@@ -93,7 +139,9 @@ class Client extends Component {
                       placeholder="Region"
                       name="region"
                       value={
-                        this.state.clearSearch ? "" : this.state.onSelect.region
+                        !this.state.clearSearch
+                          ? this.state.onSelect.region
+                          : ""
                       }
                       onChange={(e) => onChange(e)}
                     />
@@ -102,7 +150,7 @@ class Client extends Component {
                       placeholder="City"
                       name="city"
                       value={
-                        this.state.clearSearch ? "" : this.state.onSelect.city
+                        !this.state.clearSearch ? this.state.onSelect.city : ""
                       }
                       onChange={(e) => onChange(e)}
                     />
@@ -111,7 +159,7 @@ class Client extends Component {
                       placeholder="Zip code"
                       name="zip"
                       value={
-                        this.state.clearSearch ? "" : this.state.onSelect.zip
+                        !this.state.clearSearch ? this.state.onSelect.zip : ""
                       }
                       onChange={(e) => onChange(e)}
                     />
@@ -125,7 +173,7 @@ class Client extends Component {
                       placeholder="Rooms"
                       name="bed"
                       value={
-                        this.state.clearSearch ? "" : this.state.onSelect.bed
+                        !this.state.clearSearch ? this.state.onSelect.bed : ""
                       }
                       onChange={(e) => onChange(e)}
                     />
@@ -134,7 +182,7 @@ class Client extends Component {
                       placeholder="Size"
                       name="field"
                       value={
-                        this.state.clearSearch ? "" : this.state.onSelect.field
+                        !this.state.clearSearch ? this.state.onSelect.field : ""
                       }
                       onChange={(e) => onChange(e)}
                     />
@@ -145,22 +193,22 @@ class Client extends Component {
                   <h2>Price</h2>
                   <div>
                     <input
-                      type="text"
+                      type="number"
                       placeholder="Min price"
-                      name="before"
                       value={
-                        this.state.clearSearch ? "" : this.state.onSelect.before
+                        !this.state.clearSearch
+                          ? this.state.onSelect.before
+                          : ""
                       }
-                      onChange={(e) => onChange(e)}
+                      onChange={(e) => sortMin(e)}
                     />
                     <input
-                      type="text"
+                      type="number"
                       placeholder="Max price"
-                      name="after"
                       value={
-                        this.state.clearSearch ? "" : this.state.onSelect.after
+                        !this.state.clearSearch ? this.state.onSelect.after : ""
                       }
-                      onChange={(e) => onChange(e)}
+                      onChange={(e) => sortMax(e)}
                     />
                   </div>
                 </ContainerInput>
@@ -173,7 +221,8 @@ class Client extends Component {
                       onClick={() => {
                         this.setState({
                           clearSearch: true,
-                          dates: data.filter((item) => true),
+                          notFound: false,
+                          dates: data,
                         });
                       }}
                     >
@@ -191,6 +240,7 @@ class Client extends Component {
           <p>
             Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.
           </p>
+          <Button onClick={sortLiked}>Sort liked</Button>
         </div>
         {this.state.notFound ? (
           <EmptyData>
@@ -205,7 +255,7 @@ class Client extends Component {
             {this.state.dates.map((item) => {
               return (
                 <div key={item.id}>
-                  <Hause data={item} />
+                  <Hause data={item} onClick={liked} />
                 </div>
               );
             })}

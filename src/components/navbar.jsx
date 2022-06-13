@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import logo from "./icons/Vector.png";
+import { Button } from "./styledNavbar";
 class Navbar extends Component {
   render() {
     return (
@@ -7,23 +9,33 @@ class Navbar extends Component {
         <div className="nav-bar wrapper-item">
           <div className="company-item">
             <img src={logo} alt="this is logo" />
-            <h3>Houzing</h3>
+            <Link
+              to={"/products"}
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              <h3>Houzing</h3>
+            </Link>
           </div>
           <div className="nav-bar__links">
             <ul>
               <li>
-                <a href="#home">Home</a>
+                <a href=" ">Home</a>
               </li>
               <li>
-                <a href="#home">Properties</a>
+                <a href=" ">Properties</a>
               </li>
               <li>
-                <a href="#home">Contacts</a>
+                <a href=" ">Contacts</a>
               </li>
             </ul>
           </div>
           <div className="nav-bar__controls">
-            <button>Login</button>
+            <Link
+              to={"/signin"}
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              <Button>Login</Button>
+            </Link>
           </div>
         </div>
       </div>
