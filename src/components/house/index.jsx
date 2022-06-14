@@ -42,6 +42,7 @@ class Hause extends Component {
         this.setState({ count: this.state.count - 1 });
       }
     };
+
     return (
       <CardStyled>
         <div
